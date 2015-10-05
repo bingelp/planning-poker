@@ -19,7 +19,7 @@ var mute = false;
 	}, true);
 
 $(document).ready(function() {
-	
+
 	/**
 	* Socket.IO
 	* ________________________
@@ -69,7 +69,7 @@ $(document).ready(function() {
 			if (data.people.hasOwnProperty(i)) {
 				// Differentiate current client
 				if(i == id){
-					$('#participants').append('<li class="list-group-item list-group-item-success activePlayer notChangingName">'+data.people[i].name+'</li>');					
+					$('#participants').append('<li class="list-group-item list-group-item-success activePlayer notChangingName">'+data.people[i].name+'</li>');
 				}else{
 					$('#participants').append('<li class="list-group-item">'+data.people[i].name+'</li>');
 				}
@@ -163,18 +163,6 @@ $(document).ready(function() {
 	});
 
 	/**
-	* QRCode
-	*/
-
-	$('#qrCode').qrcode({
-		render: 'div',
-		width: 100,
-		height: 100,
-		color: '#3a3',
-		text: currentRoomUrl
-	});
-
-	/**
 	* Get Planning !
 	*/
 
@@ -183,9 +171,7 @@ $(document).ready(function() {
 	$("#getPlanning").click(function(event){
 		// Remove effect for button and footer
 		$('#getPlanning').addClass('animated bounceOutDown');
-		//$('#footer').addClass('animated fadeOutDown');
-		$('#qrCode').addClass('animated rotateOutDownLeft');
-		
+
 		// Remove effect of lead text 500ms after
 		setTimeout(function() {
 			$('p.lead').addClass('animated bounceOutDown');
@@ -219,8 +205,6 @@ $(document).ready(function() {
 	$('#switchGame').click(function(e){
 		// Remove all animations
 		$('#getPlanning').removeClass('animated bounceOutDown');
-		//$('#footer').removeClass('animated fadeOutDown');
-		$('#qrCode').removeClass('animated rotateOutDownLeft');
 		$('p.lead').removeClass('animated bounceOutDown');
 		$('h1').removeClass('animated bounceOutDown');
 		$('#preGame').addClass('animated lightSpeedIn').show();
@@ -393,7 +377,7 @@ $(document).ready(function() {
 
 			// Display it locally
 			newMessage(msg, null , true);
-			
+
 			this.value = '';
 
 			// Reset size of textaera
@@ -421,13 +405,13 @@ function generateRandomString(){
     var output = new Array();
     var input_arr = input.split('');
     var input_arr_len = input_arr.length;
-    
+
     for (x=0; x<howmany; x++){
         output[x] = input_arr[Math.floor(Math.random()*input_arr_len)];
     }
-    
+
     output = output.join('');
-    
+
     return output;
 }
 
@@ -505,7 +489,7 @@ function displayCards(people){
 						+'<div data-card="'+people[i].card+'" class="bg-success cards">'
 							+'<p>'+people[i].card+'</p>'
 						+'</div>'
-					+'</li>');					
+					+'</li>');
 				}else{
 					$('#cardsResult').append('<li><span>'+people[i].name+'</span>'
 						+'<div data-card="'+people[i].card+'" class="bg-danger cards">'
@@ -542,7 +526,7 @@ function updateUserStory(userStory){
 
 function changeUserStory(){
 	var oldUserStory = $('#userStory').html();
-	$('#userStoryForm').find('input').attr('placeholder', oldUserStory).val(''); 
+	$('#userStoryForm').find('input').attr('placeholder', oldUserStory).val('');
 	$('#userStoryForm').show(function(){
 		$('#userStoryForm').find('input').focus();
 	});
@@ -655,5 +639,5 @@ function newMessage(msg, author, me, muteFromServer){
 		$('#chatContent ul').append(message);
 		$('#chatContent ul').scrollTop($('#chatContent ul')[0].scrollHeight);
 	}
-	
+
 }
