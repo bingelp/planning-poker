@@ -107,30 +107,6 @@ $(document).ready(function() {
 		newMessage(data.msg, data.author, data.me, data.server);
 	});
 
-
-
-
-	/**
-	* Main
-	* ________________________
-	*/
-
-	/**
-	* Copy room link to clipboard
-	*/
-
-	$('#shareLink').on('click', function(e){
-		e.preventDefault();
-	});
-
-	$('#shareLink').clipboard({
-        path: '../js/lib/jquery.clipboard.swf',
-        copy: function() {
-        	newAlert('success','Link copied to clipboard');
-            return currentRoomUrl;
-        }
-	});
-
 	/**
 	* Theme
 	*/
